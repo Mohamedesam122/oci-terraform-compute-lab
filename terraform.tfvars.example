@@ -1,0 +1,3 @@
+region           = "me-jeddah-1"
+compartment_ocid = "ocid1.compartment.oc1..aaaaaaaa7cukhjqgtyyrw3iwz265crdmp4gxjvv2fi5wpktyz6e6aspdqf7q"
+ssh_public_key_path = "C:/OCI/ssh-key-2026-08-06.key.pub"
