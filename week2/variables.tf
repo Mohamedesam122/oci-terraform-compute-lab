@@ -1,6 +1,4 @@
-############################################
-# Provider / Auth
-############################################
+
 variable "tenancy_ocid" {
   description = "OCID of the tenancy"
   type        = string
@@ -31,18 +29,14 @@ variable "compartment_id" {
   type        = string
 }
 
-############################################
-# Naming
-############################################
+
 variable "project_name" {
   description = "Short project/lab name used as a prefix for all resource names"
   type        = string
   default     = "week2-lab"
 }
 
-############################################
-# Networking
-############################################
+
 variable "vcn_cidr" {
   description = "CIDR block for the VCN"
   type        = string
@@ -67,9 +61,7 @@ variable "dns_label" {
   default     = "vcnweek2"
 }
 
-############################################
-# Compute
-############################################
+
 variable "availability_domain" {
   description = "Availability domain name (e.g. as returned by the AD data source), leave null to auto-pick the first AD"
   type        = string
@@ -105,9 +97,7 @@ variable "app_port" {
   default     = 8080
 }
 
-############################################
-# Load Balancer
-############################################
+
 variable "lb_min_bandwidth_mbps" {
   description = "Minimum bandwidth (Mbps) for the flexible load balancer shape"
   type        = number
@@ -126,9 +116,7 @@ variable "lb_listener_port" {
   default     = 80
 }
 
-############################################
-# File Storage
-############################################
+
 variable "fss_export_path" {
   description = "Export path for the File Storage export"
   type        = string
