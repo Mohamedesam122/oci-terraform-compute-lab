@@ -1,5 +1,4 @@
 locals {
-  # Pick the AD explicitly passed in, otherwise default to the first AD returned
   availability_domain = coalesce(
     var.availability_domain,
     data.oci_identity_availability_domains.ads.availability_domains[0].name
@@ -7,7 +6,7 @@ locals {
 
   image_id = data.oci_core_images.oracle_linux.images[0].id
 
-  # Consistent naming across every resource
+
   name_prefix = var.project_name
 
   freeform_tags = {
