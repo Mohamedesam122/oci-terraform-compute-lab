@@ -1,6 +1,4 @@
-############################################
-# Public Security List (Load Balancer subnet)
-############################################
+
 resource "oci_core_security_list" "public" {
   compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.this.id
@@ -40,9 +38,7 @@ resource "oci_core_security_list" "public" {
   freeform_tags = local.freeform_tags
 }
 
-############################################
-# Private Security List (App / FSS subnet)
-############################################
+
 resource "oci_core_security_list" "private" {
   compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.this.id
