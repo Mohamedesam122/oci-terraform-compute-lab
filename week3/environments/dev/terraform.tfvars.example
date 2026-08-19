@@ -1,0 +1,33 @@
+############################################
+# environments/dev/terraform.tfvars.example
+# Copy to terraform.tfvars and fill in real values.
+# NEVER commit terraform.tfvars (it has secrets/OCIDs) - it's in .gitignore.
+#
+# NOTE: the VCN, Internet/NAT/Service gateways, and the Logging log
+# group are now CREATED by this Terraform config (see network.tf) -
+# you do NOT need to create them manually in the console anymore.
+############################################
+
+region           = "us-ashburn-1"
+tenancy_ocid     = "ocid1.tenancy.oc1..xxxxxxxxxxxxx"
+user_ocid        = "ocid1.user.oc1..xxxxxxxxxxxxx"
+fingerprint      = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
+private_key_path = "~/.oci/oci_api_key.pem"
+
+compartment_id = "ocid1.compartment.oc1..xxxxxxxxxxxxx"
+vcn_cidr       = "10.0.0.0/16"
+
+availability_domains = [
+  "AbCd:US-ASHBURN-AD-1",
+  "AbCd:US-ASHBURN-AD-2",
+  "AbCd:US-ASHBURN-AD-3",
+]
+
+ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2E... you@example.com"
+# node_image_id is optional - leave unset to auto-resolve the latest
+# compatible Oracle Linux 8 (AMD64) OKE image for your region and
+# kubernetes_version. Only set this if you need to pin a specific one:
+# node_image_id = "ocid1.image.oc1.me-jeddah-1.xxxxxxxxxxxxx"
+
+kubernetes_version = "v1.29.1"
+environment         = "dev"
