@@ -1,8 +1,4 @@
-############################################
-# environments/dev/main.tf
-# This is the ONLY place where actual values (CIDRs, names, rules)
-# are decided. The modules themselves stay generic.
-############################################
+
 
 locals {
   name_prefix = "${var.environment}-oke"
@@ -14,10 +10,7 @@ locals {
   }
 }
 
-# ---------------------------------------------------------------
-# Subnets - four calls to the SAME reusable module, each with
-# different values. This is the "reusability" the assignment asks for.
-# ---------------------------------------------------------------
+
 
 # 1) Kubernetes API endpoint subnet (public or private depending on env)
 module "endpoint_subnet" {
@@ -188,9 +181,7 @@ module "lb_subnet" {
   freeform_tags    = local.common_tags
 }
 
-# ---------------------------------------------------------------
-# OKE cluster + managed node pool
-# ---------------------------------------------------------------
+
 module "oke" {
   source = "../../modules/oke"
 
@@ -213,9 +204,7 @@ module "oke" {
     ocpus         = 2
     memory_in_gbs = 16
   }
-  # Auto-resolved by the OKE module: picks the latest OKE-published
-  # Oracle Linux 8 image compatible with the cluster's K8s version,
-  # excluding GPU and aarch64 variants.
+
   ssh_public_key = var.ssh_public_key
   node_pool_size = length(var.availability_domains) # one node per AD, scales automatically
 
