@@ -4,14 +4,11 @@ metadata:
   name: week3-app-lb
   namespace: week3-app
   annotations:
-    # Flex shape LB, sized 10-100 Mbps - tune to your needs.
+    
     service.beta.kubernetes.io/oci-load-balancer-shape: "flexible"
     service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
     service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
-    # Places the LB in the lb_subnet_id output by the OKE module's
-    # service_lb_subnet_ids - OKE picks from that list automatically,
-    # but you can pin a specific subnet OCID here if you have more than one.
-    # service.beta.kubernetes.io/oci-load-balancer-subnet1: "<lb_subnet_id>"
+
 spec:
   type: LoadBalancer
   selector:
