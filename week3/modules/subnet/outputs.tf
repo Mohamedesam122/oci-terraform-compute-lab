@@ -1,6 +1,3 @@
-############################################
-# modules/subnet/outputs.tf
-############################################
 
 output "subnet_id" {
   description = "OCID of the created subnet."
