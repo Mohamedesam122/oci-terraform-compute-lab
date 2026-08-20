@@ -1,10 +1,3 @@
-############################################
-# environments/dev/variables.tf
-# Nothing environment-specific lives in the modules - it all
-# starts here and flows down. To reuse for "prod", copy this
-# environments/dev folder to environments/prod and change values.
-############################################
-
 variable "region" { type = string }
 variable "tenancy_ocid" { type = string }
 variable "user_ocid" { type = string }
@@ -13,8 +6,6 @@ variable "private_key_path" { type = string }
 
 variable "compartment_id" { type = string }
 variable "vcn_cidr" { type = string }
-# vcn_id, gateways, and the log group are now CREATED by this config
-# (see network.tf) instead of being passed in - no longer needed here.
 
 variable "environment" {
   description = "Environment name, used as a prefix/tag (dev, staging, prod)."
