@@ -1,8 +1,4 @@
-############################################
-# modules/subnet/variables.tf
-# Every value the module needs comes in from
-# the caller (root module) - nothing is hardcoded.
-############################################
+
 
 variable "compartment_id" {
   description = "OCID of the compartment where the subnet resources are created."
