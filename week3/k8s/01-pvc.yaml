@@ -1,15 +1,3 @@
-# OKE ships the "oci-bv" StorageClass out of the box (backed by OCI
-# Block Volume, dynamic provisioning via the CSI driver). You normally
-# don't need to create it yourself - listed here for reference only.
-#
-# apiVersion: storage.k8s.io/v1
-# kind: StorageClass
-# metadata:
-#   name: oci-bv
-# provisioner: blockvolume.csi.oraclecloud.com
-# volumeBindingMode: WaitForFirstConsumer
-# parameters:
-#   vpusPerGB: "10"     # balanced performance tier
 
 apiVersion: v1
 kind: PersistentVolumeClaim
