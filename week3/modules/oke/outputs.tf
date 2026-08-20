@@ -1,6 +1,4 @@
-############################################
-# modules/oke/outputs.tf
-############################################
+
 
 output "cluster_id" {
   description = "OCID of the OKE cluster."
