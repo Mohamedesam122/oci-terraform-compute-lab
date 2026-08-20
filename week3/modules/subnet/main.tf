@@ -1,13 +1,4 @@
-############################################
-# modules/subnet/main.tf
-# Resources: Subnet, Route Table, Security List, (optional) Flow Log
-############################################
 
-# ---------------------------------------------------------------
-# Route Table
-# `dynamic "route_rules"` builds one route_rules{} block per entry
-# in var.route_rules - no matter how many rules the caller passes.
-# ---------------------------------------------------------------
 resource "oci_core_route_table" "this" {
   compartment_id = var.compartment_id
   vcn_id         = var.vcn_id
@@ -24,13 +15,7 @@ resource "oci_core_route_table" "this" {
   }
 }
 
-# ---------------------------------------------------------------
-# Security List
-# Two dynamic blocks - one for ingress, one for egress - each
-# generated from a list of objects passed in by the root module.
-# Nested dynamic blocks (tcp_options/udp_options/icmp_options) are
-# only rendered `for_each` a value actually exists (conditional).
-# ---------------------------------------------------------------
+
 resource "oci_core_security_list" "this" {
   compartment_id = var.compartment_id
   vcn_id         = var.vcn_id
@@ -83,12 +68,6 @@ resource "oci_core_security_list" "this" {
     }
   }
 }
-
-# ---------------------------------------------------------------
-# Subnet
-# `is_private` drives `prohibit_public_ip_on_vnic` with a plain
-# conditional expression - no separate public/private module needed.
-# ---------------------------------------------------------------
 resource "oci_core_subnet" "this" {
   compartment_id             = var.compartment_id
   vcn_id                     = var.vcn_id
@@ -101,11 +80,6 @@ resource "oci_core_subnet" "this" {
   freeform_tags              = var.freeform_tags
 }
 
-# ---------------------------------------------------------------
-# Enable Logs (VCN Flow Logs) - CONDITIONAL RESOURCE
-# count = 0 or 1 based on a boolean var. When disabled, the
-# resource simply doesn't exist in the plan/state.
-# ---------------------------------------------------------------
 resource "oci_logging_log" "flow_log" {
   count = var.enable_flow_logs ? 1 : 0
 
