@@ -1,9 +1,3 @@
-############################################
-# modules/oke/variables.tf
-# Fully parameterized OKE cluster + managed node pool module.
-# Supports VCN-native pod networking (OCI_VCN_IP_NATIVE) or
-# Flannel overlay, selected via a variable - not hardcoded.
-############################################
 
 variable "compartment_id" {
   description = "OCID of the compartment for the OKE cluster and node pool."
@@ -25,7 +19,6 @@ variable "kubernetes_version" {
   type        = string
 }
 
-# ---- Control plane endpoint ---------------------------------------
 variable "endpoint_subnet_id" {
   description = "OCID of the subnet used for the Kubernetes API endpoint."
   type        = string
@@ -42,8 +35,6 @@ variable "endpoint_nsg_ids" {
   type        = list(string)
   default     = []
 }
-
-# ---- Pod networking (CNI) -----------------------------------------
 variable "cni_type" {
   description = "CNI type for the cluster/node pool: OCI_VCN_IP_NATIVE (VCN-native pod networking) or FLANNEL_OVERLAY."
   type        = string
@@ -73,7 +64,7 @@ variable "max_pods_per_node" {
   default     = 31
 }
 
-# ---- Add-ons / cluster options --------------------------------------
+
 variable "is_kubernetes_dashboard_enabled" {
   type    = bool
   default = false
@@ -89,7 +80,6 @@ variable "service_lb_subnet_ids" {
   type        = list(string)
 }
 
-# ---- Node pool ------------------------------------------------------
 variable "node_pool_name" {
   type    = string
   default = "default-node-pool"
